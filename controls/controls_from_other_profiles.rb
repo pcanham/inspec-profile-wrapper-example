@@ -13,6 +13,9 @@ include_controls 'linux-baseline' do
   skip_control 'os-10'
 end
 
+include_controls 'ssh-baseline' do
+end
+
 #
 # The "require_controls" command allows specific controls from an inherited profile to be executed.
 #
@@ -21,7 +24,7 @@ end
 # is executed. No other controls from the "ssh-baseline" profile will be
 # executed.
 #
-require_controls 'ssh-baseline' do
+#require_controls 'ssh-baseline' do
   # Controls "sshd-01" and "sshd-02" will be executed as-is as they are defined
   # in the "ssh-baseline" profile whenever our profile is executed.
   #control 'sshd-01'
@@ -36,4 +39,4 @@ require_controls 'ssh-baseline' do
   #control 'sshd-03' do
   #  impact 0.1
   #end
-end
+#end
