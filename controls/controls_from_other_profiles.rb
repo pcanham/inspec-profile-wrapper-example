@@ -7,20 +7,10 @@
 # the inspec.yml.
 #
 include_controls 'linux-baseline' do
-  # In the event there is a control from an inherited profile that should not be
-  # run, it can be skipped with the "skip_control" command. In this example,
-  # InSpec will not run the "os-05" control from the "linux-baseline" profile
-  # even though we've told InSpec to run all controls from "linux-baseline".
   skip_control 'os-05'
-
-  # Controls from an inherited profile can be modified as well without requiring
-  # forking the profile and maintaining a copy. A common use-case is altering
-  # the impact of a given control. In this example, we are lowering the priority
-  # of the "package-08" control to 0.1 (low severity) from the original impact
-  # of 1.0 (critical severity).
-  control 'package-08' do
-    impact 0.1
-  end
+  skip_control 'os-05b'
+  skip_control 'os-06'
+  skip_control 'os-10'
 end
 
 #
@@ -34,8 +24,8 @@ end
 require_controls 'ssh-baseline' do
   # Controls "sshd-01" and "sshd-02" will be executed as-is as they are defined
   # in the "ssh-baseline" profile whenever our profile is executed.
-  control 'sshd-01'
-  control 'sshd-02'
+  #control 'sshd-01'
+  #control 'sshd-02'
 
   # Just like the "include_controls" command, controls inherited from another
   # profile can be modified if necessary without requiring the control or
@@ -43,7 +33,7 @@ require_controls 'ssh-baseline' do
   # "sshd-03" control will be executed every time our profile is executed, but
   # if it fails, it will only report as a low severity (0.1) instead of the
   # original critical severity.
-  control 'sshd-03' do
-    impact 0.1
-  end
+  #control 'sshd-03' do
+  #  impact 0.1
+  #end
 end
